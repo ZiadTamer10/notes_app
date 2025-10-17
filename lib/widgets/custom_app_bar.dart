@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
     return SafeArea(
       child: Row(
         children: [
-          Text('Notes', style: TextStyle(fontSize: 28)),
+          Text(title, style: TextStyle(fontSize: 28)),
           Spacer(),
           CustomIcon(icon: icon),
         ],
