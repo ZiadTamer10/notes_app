@@ -46,7 +46,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomTextField(
             hintText: 'Content',
             onSaved: (value) {
-              title = value;
+              subTitle = value;
             },
             maxLines: 5,
           ),
