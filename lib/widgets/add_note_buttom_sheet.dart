@@ -22,13 +22,16 @@ class AddNoteButtomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: MediaQuery.of(context).viewInsets.bottom,
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: SingleChildScrollView(child: AddNoteForm()),
             ),
-            child: SingleChildScrollView(child: AddNoteForm()),
           );
         },
       ),
