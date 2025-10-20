@@ -18,6 +18,8 @@ class AddNoteButtomSheet extends StatelessWidget {
             print('Failed ${state.errMessage}');
           }
 
+          //!Refresh NoteList
+
           if (state is AddNoteSuccess) {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
