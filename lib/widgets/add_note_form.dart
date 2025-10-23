@@ -43,8 +43,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             maxLines: 5,
           ),
+          SizedBox(height: 30),
           ColorsListView(),
-          SizedBox(height: 70),
+          SizedBox(height: 30),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CutomButton(
