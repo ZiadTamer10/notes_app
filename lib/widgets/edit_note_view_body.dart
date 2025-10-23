@@ -55,3 +55,11 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
     );
   }
 }
+
+//? if i want to edit the content istelf in the note :
+//? first : we must use TextEditingController
+//? go to CustomTextField and create variable => Controller
+//? second : in EditNoteViewBody
+//? create variable => TextEditingController titleController && TextEditingController subTitleController;
+//? third : in initState هنعرف المتغيرات اللي عملناها و هيكون باعتينله القيم القديمه
+//? fourth : path the controller to CustomTextField
