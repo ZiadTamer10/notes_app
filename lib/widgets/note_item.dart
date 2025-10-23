@@ -18,7 +18,7 @@ class NoteImte extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return EditNoteView();
+              return EditNoteView(note: note);
             },
           ),
         );
