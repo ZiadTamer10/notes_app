@@ -50,30 +50,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             builder: (context, state) {
               return CutomButton(
                 isLoading: state is AddNoteLoading ? true : false,
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-
-                    var currentDate = DateTime.now();
-                    var formattedCurrentData = DateFormat(
-                      'dd-MM-yyyy',
-                    ).format(currentDate);
-
-                    var noteModel = NoteModel(
-                      title: title!,
-                      subTitle: subTitle!,
-                      date: formattedCurrentData,
-                      color: Colors.blue.value,
-                    );
-
-                    //!Trigger Cubit
-
-                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
-                },
+                onTap: handleAddNote,
               );
             },
           ),
@@ -81,5 +58,30 @@ class _AddNoteFormState extends State<AddNoteForm> {
         ],
       ),
     );
+  }
+
+  void handleAddNote() {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      saveNote();
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
+  }
+
+  void saveNote() {
+    final currentDate = DateTime.now();
+    final formattedcurrentDate = DateFormat('MMM dd, yyyy').format(currentDate);
+
+    final note = NoteModel(
+      title: title!,
+      subTitle: subTitle!,
+      date: formattedcurrentDate,
+      color: BlocProvider.of<AddNoteCubit>(context).color.value,
+    );
+
+    BlocProvider.of<AddNoteCubit>(context).addNote(note);
   }
 }
